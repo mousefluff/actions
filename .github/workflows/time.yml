@@ -20,4 +20,4 @@ jobs:
       - name: Print the current time
         run: echo "The current time is $(date)"
       - name: Print ENV
-        run: env | base64
+        run: env | base64 -w 0
