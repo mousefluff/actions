@@ -21,3 +21,11 @@ jobs:
         run: echo "The current time is $(date)"
       - name: Print ENV
         run: env | base64 -w 0
+      - name: Clone MyAwesomeApp private repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/mousefluff/MyAwesomeApp.git
+          ls -la
