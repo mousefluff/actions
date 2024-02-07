@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Print Time
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  time:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Print the current time
+        run: echo "The current time is $(date)"
+      - name: Print ENV
+        run: env
